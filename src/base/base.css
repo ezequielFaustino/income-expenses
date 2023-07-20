@@ -17,3 +17,7 @@ h4,
 p {
   font-size: clamp(0.75rem, 1rem + 10vw, 1rem);
 }
+
+h4 {
+  margin-bottom: 1em;
+}
