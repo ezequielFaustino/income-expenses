@@ -1,0 +1,25 @@
+.wrapper {
+  border: 2px solid red;
+  padding: 0 1em;
+  max-width: 60em;
+  margin-inline: auto;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inc-exp-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25em 0;
+
+  & div > p[data-js="money-plus"] {
+    color: green;
+  }
+
+  & div > p[data-js="money-minus"] {
+    color: red;
+  }
+}
