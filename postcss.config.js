@@ -7,7 +7,7 @@ module.exports = {
     require('postcss-import'),
     postcssPresetEnv({stage: 2}),
     require('cssnano'),
-    // tailwindcss({}),
-    // autoprefixer({}),
+    tailwindcss({}),
+    autoprefixer({}),
   ]
 }
