@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Controle de Despesas</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/style.css">
 </head>
 
@@ -15,7 +19,7 @@
 
     <div class="current-balance">
       <h4 class="uppercase">Saldo atual</h4>
-      <h1>R$ 0.00</h1>
+      <h1>R$ 0.01</h1>
     </div>
 
     <div class="inc-exp-list shadow hover:shadow-lg">
@@ -32,21 +36,23 @@
 
     <h3 class="transactions-title border-b-2 border-gray-300">Transações</h3>
 
-    <h3 class="transactions-title border-b-2 border-gray-300">Adicionar transações</h3>
+    <h4 class="border-b-2 border-gray-300">Adicionar transações</h4>
 
     <form data-js="form">
       <div class="form-control">
         <label for="text">Nome</label>
-        <input class="border-2 border-neutral-500 rounded" type="text" data-js="text" placeholder="Nome da transação" required>
+        <input class="border-2 border-neutral-500 rounded" type="text" data-js="text" placeholder="Nome da transação"
+          required>
       </div>
-      
+
       <div class="form-control">
         <label for="amount">Valor</label>
         <small>(negativo - despesas, positivo - receitas)</small>
-        <input class="border-2 border-neutral-500 rounded" type="number" data-js="amount" placeholder="Valor da transação">
+        <input class="border-2 border-neutral-500 rounded" type="number" data-js="amount"
+          placeholder="Valor da transação">
       </div>
 
-      <button class="px-4 py-1 rounded bg-sky-500">Adicionar</button>
+      <button class="px-4 py-1 rounded bg-sky-400">Adicionar</button>
     </form>
   </div>
 </body>
