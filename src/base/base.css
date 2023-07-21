@@ -32,4 +32,5 @@ h4 {
 
 body {
   font-family: var(--ff-base);
+  color: red;
 }
