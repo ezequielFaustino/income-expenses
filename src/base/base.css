@@ -2,9 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --clr-primary-700: #1303E6;
+  --clr-primary-400: #12FF4C;
+  --clr-secondary-400: #FA0C00;
+
+  --ff-base: 'IBM Plex Mono', monospace;
+}
+
 h1 {
   font-size: clamp(1.25rem, 1rem + 10vw, 1.5rem);
-  color: #1D5D9B;
+  color: var(--clr-primary-700);
 }
 
 h2,
@@ -20,4 +28,8 @@ p {
 
 h4 {
   margin-bottom: 1em;
+}
+
+body {
+  font-family: var(--ff-base);
 }
