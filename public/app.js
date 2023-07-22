@@ -8,29 +8,33 @@ const addBtn = document.querySelector('[data-js="add-btn"]')
 
 const dontRefreshPage = event => event.preventDefault()
 
-const transactionsList = []
+
+const getTransactionsList = (amount) => {
+  const transactionsList = []
+
+  if (amount > 0) {
+    transactionsList.push({ income: amount })
+  } else if (amount < 0) {
+    transactionsList.push({ expense: amount })
+  }
+
+  return transactionsList
+}
 
 const incomes = amount => {
-  if(amount > 0) {
-    transactionsList.push({income: amount})
-    const total = transactionsList.reduce((accumulator, {income}) => {
-      const sum = accumulator + income
-      return sum
-    }, 0)
+  if (amount > 0) {
+    transactionsList.map(({ income }) => {
+      return `${income}`
+    })
 
-    return total
   }
 }
 
 const expenses = amount => {
   if (amount < 0) {
-    transactionsList.push({ expense: amount })
-    const total = transactionsList.reduce((accumulator, { expense }) => {
-      const sum = accumulator + expense
-      return sum
-    }, 0)
-
-    return total
+    transactionsList.map(({ expense }) => {
+      return `${expense}`
+    })
   }
 }
 
@@ -39,12 +43,9 @@ const clickEvent = (e) => {
   addBtn.setPointerCapture(e.pointerId)
 
   const amount = document.querySelector('[data-js="amount"]').value
-
-  const totalIncomes = incomes(+amount)
-  const totalExpenses = expenses(+amount)
-
-  console.log(totalIncomes)
-  console.log(totalExpenses)
+  
+  const inOrOut = getTransactionsList(+amount)
+  console.log(inOrOut)
 }
 
 
