@@ -21,21 +21,26 @@
   }
 }
 
-.inc-exp-list { 
+.inc-exp-list {
   display: flex;
   justify-content: space-between;
   padding: 1.25em 0;
+
 
   @media screen and (min-width: 60em) {
     justify-content: space-evenly;
   }
 
+  & div>p {
+    font-weight: 500;
+  }
+
   & div>p[data-js="money-plus"] {
-    color: var(--clr-primary-400);
+    color: var(--clr-primary-500);
   }
 
   & div>p[data-js="money-minus"] {
-    color: var(--clr-secondary-400);
+    color: var(--clr-secondary-500);
   }
 }
 
