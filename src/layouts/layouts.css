@@ -1,6 +1,8 @@
 @import '../base/base.css';
 
 .wrapper {
+  background-color: var(--clr-neutral);
+  border-radius: 1.25em;
   padding: 0 1em;
   max-width: 60em;
   margin-inline: auto;
@@ -12,6 +14,7 @@
 
   @media screen and (min-width: 60em) {
     min-width: 50em;
+    background: none;
   }
 }
 
@@ -25,7 +28,6 @@
   display: flex;
   justify-content: space-between;
   padding: 1.25em 0;
-
 
   @media screen and (min-width: 60em) {
     justify-content: space-evenly;
@@ -55,10 +57,6 @@ ul[data-js="transactions-list"] {
 
   & li {
     padding: .5em 0;
-  }
-
-  & li.plus {
-    color: var(--clr-primary-500);
   }
 
   & li.minus {

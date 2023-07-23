@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --clr-primary-700: #0C69F2;
-  --clr-primary-500: #00DB16;
-  --clr-secondary-500: #EB0F00;
+  --clr-primary-700: #1C2BED;
+  --clr-primary-500: #0d491f;
+  --clr-secondary-500: #ED1311;
+  --clr-neutral: #F2EDDA;
 
   --ff-base: 'IBM Plex Mono', monospace;
 }
@@ -27,7 +28,7 @@ p {
 }
 
 h4 {
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 body {
