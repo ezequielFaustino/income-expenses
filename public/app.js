@@ -21,7 +21,7 @@ const addTransactionIntoDom = (transaction) => {
   const amountWithoutOperator = Math.abs(transaction.amount)
   li.classList.add(CSSClass)
   li.classList.add('border-b-2')
-  li.classList.add('border-stone-400')
+  li.classList.add('border-sky-400')
 
   li.innerHTML = `${transaction.name}: R$ ${operator}${amountWithoutOperator}`
 
@@ -33,7 +33,6 @@ const addTransactionIntoDom = (transaction) => {
 
   const total = sumBalanceValues()
   balance.innerText = `R$${total}.00`
-
 }
 
 const getBalanceValues = () => {
@@ -48,10 +47,24 @@ const sumBalanceValues = () => {
  return sum
 }
 
+const incomesAndExpenses = () => {
+  const getAmount = getBalanceValues()
+  
+  const incomes = getAmount.filter((amount) => amount > 0)
+    .reduce((accumulator, amount) => accumulator + amount, 0)
+
+  const expenses = getAmount.filter((amount) => amount < 0)
+    .reduce((accumulator, amount) => accumulator + amount, 0)
+  
+  moneyPlus.innerText = `R$ ${incomes}.00`
+  moneyMinus.innerText = `R$ ${expenses}.00`
+
+}
+
 
 const init = () => {
   transactionsList.forEach(addTransactionIntoDom)
-  sumBalanceValues()
+  incomesAndExpenses()
 }
 
 const clickEvent = (e) => {
