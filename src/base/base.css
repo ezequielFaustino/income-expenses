@@ -4,7 +4,7 @@
 
 :root {
   --clr-primary-700: #1C2BED;
-  --clr-primary-500: #0d491f;
+  --clr-primary-500: rgb(3, 158, 3);
   --clr-secondary-500: #ED1311;
   --clr-neutral: #F2EDDA;
 

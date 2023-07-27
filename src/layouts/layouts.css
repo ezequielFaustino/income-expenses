@@ -59,6 +59,10 @@ ul[data-js="transactions-list"] {
     padding: .5em 0;
   }
 
+  & li.plus {
+    color: var(--clr-primary-500);
+  }
+
   & li.minus {
     color: var(--clr-secondary-500);
   }
