@@ -96,7 +96,8 @@ form[data-js="form"] {
     }
   }
 
-  & button {
+  & input[type="submit"] {
     margin: 1.25em auto;
+    cursor: pointer;
   }
 }
