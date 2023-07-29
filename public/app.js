@@ -9,52 +9,63 @@ const addBtn = document.querySelector('[data-js="add-btn"]')
 
 let transactions = []
 
-/*
-const addTransactionIntoDom = ({amount, name, id}) => {
+const addTransactionIntoDom = ({amount, name}) => {
   const li = document.createElement('li')
-  const CSSClass = transaction.amount < 0 ? 'minus' : 'plus'
-  const operator = transaction.amount > 0 ? '' : '-'
-  const amountWithoutOperator = Math.abs(transaction.amount)
+  const CSSClass = amount < 0 ? 'minus' : 'plus'
+  const operator = amount > 0 ? '' : '-'
+  const amountWithoutOperator = Math.abs(amount)
   li.classList.add(CSSClass)
   li.classList.add('border-b-2')
   li.classList.add('border-sky-400')
 
-  li.innerHTML = `${transaction.name}: R$ ${operator}${amountWithoutOperator}`
+  li.innerHTML = `<button class='delete-btn'>X</button> ${name}: R$ ${operator}${amountWithoutOperator} `
 
   const fragment = document.createDocumentFragment()
   fragment.append(li)
   transactionsUl.append(fragment)
 }
-*/
 
-/*
+const getTotal = transactionsAmounts => transactionsAmounts
+  .reduce((accumulator, amount) => accumulator + amount, 0)
+
+const getIncome = transactionsAmounts => transactionsAmounts
+  .filter(value => value > 0)
+  .reduce((accumulator, value) => accumulator + value, 0)
+  .toFixed(2)
+
+const getExpense = transactionsAmounts => Math.abs(transactionsAmounts
+  .filter(value => value < 0)
+  .reduce((accumulator, value) => accumulator + value, 0))
+  .toFixed(2)
+
 const updateBalanceValues = () => {
-  const getLocalStorage = localStorage.getLocalStorage()
+  const transactionsAmounts = transactions.map(({amount}) => amount)
 
-  const transactionsAmounts = getLocalStorage.map( ({amount}) => amount)
-  console.log(transactionsAmounts)
-  const total = transactionsAmounts
-    .reduce((accumulator, amount) => accumulator + amount, 0)
+  const total = getTotal(transactionsAmounts)
 
+  const income = getIncome(transactionsAmounts)
 
-  const income = transactionsAmounts
-    .filter(value => value > 0)
-    .reduce((accumulator, value) => accumulator + value, 0)
-
-  const expense = transactionsAmounts
-    .filter(value => value < 0)
-    .reduce((accumulator, value) => accumulator + value, 0)
+  const expense = getExpense(transactionsAmounts)
 
   balanceDisplay.textContent = `R$${total}`
   moneyMinusDisplay.textContent = `R$ ${expense}`
   moneyPlusDisplay.textContent = `R$ ${income}`
 }
-*/
-const init = () => {
 
+const init = () => {
+  transactionsUl.innerHTML = ''
+  transactions.forEach(addTransactionIntoDom)
+  updateBalanceValues()
 }
 
 const generateID = () => Math.round(Math.random() * 1000)
+
+const cleanInputs = () => {
+  transactionInput.value = ''
+  amountInput.value = ''
+
+  transactionInput.focus()
+}
 
 const addTransactionsArray = (transactionName, transactionAmount) => {
   transactions.push({
@@ -63,7 +74,6 @@ const addTransactionsArray = (transactionName, transactionAmount) => {
     amount: Number(transactionAmount)
   })
 
-  console.log(transactions)
 }
 
 const handleFormSubmit = event => {
@@ -71,8 +81,17 @@ const handleFormSubmit = event => {
   
   const transactionName = transactionInput.value.trim()
   const transactionAmount = amountInput.value.trim()
+  const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
+
+  if(isSomeInputEmpty) {
+    alert('Por favor, preecha tanto a transação quanto o valor!')
+    return
+  }
+
   
   addTransactionsArray(transactionName, transactionAmount)
+  init()
+  cleanInputs()
 }
 
 form.addEventListener('submit', handleFormSubmit)
