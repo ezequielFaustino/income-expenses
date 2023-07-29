@@ -9,7 +9,15 @@ const addBtn = document.querySelector('[data-js="add-btn"]')
 
 let transactions = []
 
-const addTransactionIntoDom = ({amount, name}) => {
+const delTransaction = ID => {
+  transactions = transactions.filter(transaction =>
+    transaction.id !== ID)
+ 
+  console.log(transactions)
+
+}
+
+const addTransactionIntoDom = ({amount, name, id}) => {
   const li = document.createElement('li')
   const CSSClass = amount < 0 ? 'minus' : 'plus'
   const operator = amount > 0 ? '' : '-'
@@ -18,8 +26,13 @@ const addTransactionIntoDom = ({amount, name}) => {
   li.classList.add('border-b-2')
   li.classList.add('border-sky-400')
 
-  li.innerHTML = `<button class='delete-btn'>X</button> ${name}: R$ ${operator}${amountWithoutOperator} `
-
+  li.innerHTML =`
+    <button class="delete-btn" onClick="delTransaction(${id})"></button>
+      X
+    </button> 
+    ${name} 
+    R$ ${operator}${amountWithoutOperator}`
+  
   const fragment = document.createDocumentFragment()
   fragment.append(li)
   transactionsUl.append(fragment)
@@ -27,6 +40,7 @@ const addTransactionIntoDom = ({amount, name}) => {
 
 const getTotal = transactionsAmounts => transactionsAmounts
   .reduce((accumulator, amount) => accumulator + amount, 0)
+  .toFixed(2)
 
 const getIncome = transactionsAmounts => transactionsAmounts
   .filter(value => value > 0)
@@ -63,8 +77,6 @@ const generateID = () => Math.round(Math.random() * 1000)
 const cleanInputs = () => {
   transactionInput.value = ''
   amountInput.value = ''
-
-  transactionInput.focus()
 }
 
 const addTransactionsArray = (transactionName, transactionAmount) => {
@@ -92,6 +104,7 @@ const handleFormSubmit = event => {
   addTransactionsArray(transactionName, transactionAmount)
   init()
   cleanInputs()
+  transactionInput.focus()
 }
 
 form.addEventListener('submit', handleFormSubmit)
