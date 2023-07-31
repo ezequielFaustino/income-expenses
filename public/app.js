@@ -5,37 +5,31 @@ const form = document.querySelector('[data-js="form"]')
 const transactionInput = document.querySelector('[data-js="text"]')
 const amountInput = document.querySelector('[data-js="amount"]')
 const transactionsUl = document.querySelector('[data-js="transactions-list"]')
-const addBtn = document.querySelector('[data-js="add-btn"]')
 
 let transactions = []
 
-const delTransaction = ID => {
-  transactions = transactions.filter(transaction =>
-    transaction.id !== ID)
- 
-  console.log(transactions)
-
-}
-
-const addTransactionIntoDom = ({amount, name, id}) => {
+const addTransactionIntoDom = ({ amount, name, id }) => {
   const li = document.createElement('li')
   const CSSClass = amount < 0 ? 'minus' : 'plus'
   const operator = amount > 0 ? '' : '-'
   const amountWithoutOperator = Math.abs(amount)
   li.classList.add(CSSClass)
-  li.classList.add('border-b-2')
-  li.classList.add('border-sky-400')
-
-  li.innerHTML =`
-    <button class="delete-btn" onClick="delTransaction(${id})"></button>
-      X
-    </button> 
-    ${name} 
-    R$ ${operator}${amountWithoutOperator}`
   
-  const fragment = document.createDocumentFragment()
-  fragment.append(li)
-  transactionsUl.append(fragment)
+  const templateHTML = `
+  <button class="delete-btn" onClick="removeTransaction()">
+    X
+  </button> 
+  ${name} 
+  R$ ${operator}${amountWithoutOperator}`
+  li.insertAdjacentHTML('beforeend', templateHTML)
+
+  transactionsUl.append(li)
+}
+
+const removeTransaction = () => {
+  
+  console.log('clik')
+
 }
 
 const getTotal = transactionsAmounts => transactionsAmounts
@@ -53,7 +47,7 @@ const getExpense = transactionsAmounts => Math.abs(transactionsAmounts
   .toFixed(2)
 
 const updateBalanceValues = () => {
-  const transactionsAmounts = transactions.map(({amount}) => amount)
+  const transactionsAmounts = transactions.map(({ amount }) => amount)
 
   const total = getTotal(transactionsAmounts)
 
@@ -85,22 +79,21 @@ const addTransactionsArray = (transactionName, transactionAmount) => {
     name: transactionName,
     amount: Number(transactionAmount)
   })
-
 }
 
 const handleFormSubmit = event => {
   event.preventDefault()
-  
+
   const transactionName = transactionInput.value.trim()
   const transactionAmount = amountInput.value.trim()
   const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
 
-  if(isSomeInputEmpty) {
+  if (isSomeInputEmpty) {
     alert('Por favor, preecha tanto a transação quanto o valor!')
     return
   }
 
-  
+
   addTransactionsArray(transactionName, transactionAmount)
   init()
   cleanInputs()

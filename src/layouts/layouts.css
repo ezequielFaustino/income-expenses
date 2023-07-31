@@ -19,9 +19,13 @@
 }
 
 .current-balance {
+  margin-bottom: 1em;
+
   @media screen and (min-width: 60em) {
     text-align: center;
   }
+
+  
 }
 
 .inc-exp-list {
@@ -33,7 +37,14 @@
     justify-content: space-evenly;
   }
 
+  & div>h3 {
+    border-bottom: 1px solid var(--clr-primary-700);
+    padding-bottom: 0;
+    margin: 1em 0;
+  }
+
   & div>p {
+    
     font-weight: 500;
   }
 
@@ -57,14 +68,21 @@ ul[data-js="transactions-list"] {
 
   & li {
     padding: .5em 0;
+    margin: .5em 0;
   }
 
   & li.plus {
-    color: var(--clr-primary-500);
+    border: 2px solid var(--clr-primary-500);
   }
 
   & li.minus {
+    border: 2px solid var(--clr-secondary-500);
+  }
+
+  & button.delete-btn {
+    cursor: pointer;
     color: var(--clr-secondary-500);
+    padding: 0 .5em;
   }
 }
 
