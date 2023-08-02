@@ -27,10 +27,6 @@ p {
   font-size: clamp(0.75rem, 1rem + 10vw, 1rem);
 }
 
-h4 {
-  margin: 1em 0;
-}
-
 body {
   font-family: var(--ff-base);
 }
