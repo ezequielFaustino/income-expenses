@@ -6,13 +6,15 @@ const transactionInput = document.querySelector('[data-js="text"]')
 const amountInput = document.querySelector('[data-js="amount"]')
 const transactionsUl = document.querySelector('[data-js="transactions-list"]')
 
-let transactions = []
+let transactions = [
+  {id: 1, name: 'Salário', amount: 1400},
+  {id: 2, name: 'Aluguel', amount: -400}
+]
 
-// const removeTransaction = ID => {
-//   transactions = transactions.filter(id => id !== ID)
-//   console.log(transactions)
-
-// }
+const removeTransaction = ID => {
+  transactions = transactions.filter(({id}) => id !== ID)
+  init()
+}
 
 const addTransactionIntoDom = ({ amount, name, id }) => {
   const CSSClass = amount < 0 ? 'minus' : 'plus'
@@ -75,6 +77,14 @@ const updateBalanceValues = () => {
   moneyPlusDisplay.textContent = `R$${income}`
 }
 
+const removeTransactionToDom = event => {
+  const trashWasClicked = event.target.dataset.trash
+  const itemId = Number(trashWasClicked)
+  if(trashWasClicked) {
+    removeTransaction(itemId)
+  }
+}
+
 const init = () => {
   transactionsUl.innerHTML = ''
   transactions.forEach(addTransactionIntoDom)
@@ -109,3 +119,4 @@ const handleFormSubmit = event => {
 
 init()
 form.addEventListener('submit', handleFormSubmit)
+transactionsUl.addEventListener('pointerdown', removeTransactionToDom)

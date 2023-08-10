@@ -94,7 +94,7 @@ ul[data-js="transactions-list"] {
     cursor: pointer;
     padding: 0 .5em;
 
-    & li {
+    & i {
       pointer-events: none;
       margin-left: .75em;
     }
