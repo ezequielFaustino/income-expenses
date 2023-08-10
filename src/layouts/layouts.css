@@ -75,6 +75,11 @@ ul[data-js="transactions-list"] {
     padding: .5em 0;
     margin: .5em 0;
     user-select: none;
+
+    & span {
+      margin-left: 1em;
+
+    }
   }
 
   & li.plus {
@@ -91,6 +96,7 @@ ul[data-js="transactions-list"] {
 
     & li {
       pointer-events: none;
+      margin-left: .75em;
     }
   }
 }

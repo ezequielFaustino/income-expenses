@@ -1,4 +1,3 @@
-
 const balanceDisplay = document.querySelector('[data-js="balance"]')
 const moneyPlusDisplay = document.querySelector('[data-js="money-plus"]')
 const moneyMinusDisplay = document.querySelector('[data-js="money-minus"]')
@@ -7,34 +6,36 @@ const transactionInput = document.querySelector('[data-js="text"]')
 const amountInput = document.querySelector('[data-js="amount"]')
 const transactionsUl = document.querySelector('[data-js="transactions-list"]')
 
-let transactions = [
-  { id: 1, name: 'Salário', amount: 2000 },
-  { id: 2, name: 'Aluguel', amount: -800 }
-]
+let transactions = []
 
-const removeTransaction = ID => {
-  transactions = transactions.filter(id => id !== ID)
-  console.log(transactions)
+// const removeTransaction = ID => {
+//   transactions = transactions.filter(id => id !== ID)
+//   console.log(transactions)
 
-}
+// }
 
 const addTransactionIntoDom = ({ amount, name, id }) => {
   const CSSClass = amount < 0 ? 'minus' : 'plus'
   const operator = amount > 0 ? '' : '-'
   const amountWithoutOperator = Math.abs(amount)
   const li = document.createElement('li')
+  li.dataset.id = `${id}`
   li.classList.add(CSSClass)
   li.classList.add('border-2')
   li.classList.add('border-b-indigo-500')
 
-  li.innerHTML = `
-    <button class='delete-btn' onclick="alert(${id})">
-      <i class="fa-solid fa-trash"></i>
-    </button>
-    ${name} R$ ${operator}${amountWithoutOperator}
-  `
+  const button = document.createElement('button')
+  button.classList.add('delete-btn')
+  button.dataset.trash = `${id}`
+  button.innerHTML = `<i class="fa-solid fa-trash"></i>`
+  li.appendChild(button)
+  
+  const span = document.createElement('span')
+  span.textContent = `${name} | R$ ${operator}${amountWithoutOperator}`
+  li.appendChild(span)
+
   const fragment = document.createDocumentFragment()
-  fragment.append(li)
+  fragment.appendChild(li)
   transactionsUl.append(fragment)
 }
 
