@@ -5,6 +5,7 @@ const form = document.querySelector('[data-js="form"]')
 const transactionInput = document.querySelector('[data-js="text"]')
 const amountInput = document.querySelector('[data-js="amount"]')
 const transactionsUl = document.querySelector('[data-js="transactions-list"]')
+const alertItem = document.querySelector('.alert-item')
 
 const getLocalStorage = JSON.parse(localStorage.getItem('transactions'))
 
@@ -111,7 +112,10 @@ const handleFormSubmit = event => {
   const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
 
   if (isSomeInputEmpty) {
-    alert('Por favor, preecha tanto a transação quanto o valor!')
+    alertItem.classList.remove('hide')
+    setTimeout(() => {
+      alertItem.classList.add('hide')
+    }, 3000)
     return
   }
 
