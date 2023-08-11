@@ -32,24 +32,28 @@
 
 .inc-exp-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: .5em 1.5em;
-  border-bottom: 2px solid var(--clr-primary-700);
 
-  @media screen and (min-width: 60em) {
-    justify-content: space-around;
+  & div:first-child {
+    border-right: 2px solid var(--clr-neutral);
+
+    @media screen and (min-width: 60em) {
+      border: none;
+    }
   }
 
   & div>h3 {
     padding-bottom: 0;
-    margin: .5em 0;
+    margin: .5em 1em;
   }
-
+  
   & div>p {
     font-weight: 500;
+    padding: 0 .5em;
   }
-
+  
   & div>p[data-js="money-plus"] {
     color: var(--clr-primary-500);
   }
@@ -96,7 +100,6 @@ ul[data-js="transactions-list"] {
     & i {
       pointer-events: none;
       margin-left: .75em;
-      color: var(--clr-secondary-500);
     }
   }
 }
