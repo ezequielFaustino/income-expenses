@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --clr-primary-700: #3FCC3D;
+  --clr-primary-500: #99653D;
+  --clr-secondary-500: #FF2300;
+  --clr-secondary-700: #CC6314;
+  --clr-neutral: #fff;
+
+  --ff-base: 'IBM Plex Mono', monospace;
+}
+
+h1 {
+  color: var(--clr-primary-700);
+}
+
+body {
+  font-family: var(--ff-base);
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h3, h4 {
+  font-weight: 500;
+}
