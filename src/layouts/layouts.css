@@ -34,20 +34,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25em 0;
+  padding: .5em 1.5em;
+  border-bottom: 2px solid var(--clr-primary-700);
 
   @media screen and (min-width: 60em) {
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
 
   & div>h3 {
-    border-bottom: 1px solid var(--clr-primary-700);
     padding-bottom: 0;
     margin: .5em 0;
   }
 
   & div>p {
-    
     font-weight: 500;
   }
 
@@ -97,6 +96,7 @@ ul[data-js="transactions-list"] {
     & i {
       pointer-events: none;
       margin-left: .75em;
+      color: var(--clr-secondary-500);
     }
   }
 }

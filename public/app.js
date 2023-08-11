@@ -6,13 +6,14 @@ const transactionInput = document.querySelector('[data-js="text"]')
 const amountInput = document.querySelector('[data-js="amount"]')
 const transactionsUl = document.querySelector('[data-js="transactions-list"]')
 
-let transactions = [
-  {id: 1, name: 'Salário', amount: 1400},
-  {id: 2, name: 'Aluguel', amount: -400}
-]
+const getLocalStorage = JSON.parse(localStorage.getItem('transactions'))
+
+let transactions = localStorage
+  .getItem('transactions') !== null ? getLocalStorage : []
 
 const removeTransaction = ID => {
-  transactions = transactions.filter(({id}) => id !== ID)
+  transactions = transactions.filter(({ id }) => id !== ID)
+  updateLocalStorage()
   init()
 }
 
@@ -31,7 +32,7 @@ const addTransactionIntoDom = ({ amount, name, id }) => {
   button.dataset.trash = `${id}`
   button.innerHTML = `<i class="fa-solid fa-trash"></i>`
   li.appendChild(button)
-  
+
   const span = document.createElement('span')
   span.textContent = `${name} | R$ ${operator}${amountWithoutOperator}`
   li.appendChild(span)
@@ -80,9 +81,13 @@ const updateBalanceValues = () => {
 const removeTransactionToDom = event => {
   const trashWasClicked = event.target.dataset.trash
   const itemId = Number(trashWasClicked)
-  if(trashWasClicked) {
+  if (trashWasClicked) {
     removeTransaction(itemId)
   }
+}
+
+const updateLocalStorage = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions))
 }
 
 const init = () => {
@@ -112,6 +117,7 @@ const handleFormSubmit = event => {
 
 
   addTransactionsArray(transactionName, transactionAmount)
+  updateLocalStorage()
   init()
   cleanInputs()
   transactionInput.focus()
