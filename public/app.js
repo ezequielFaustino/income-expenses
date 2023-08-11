@@ -34,7 +34,7 @@ const addTransactionIntoDom = ({ amount, name, id }) => {
   li.appendChild(button)
 
   const span = document.createElement('span')
-  span.textContent = `${name} | R$ ${operator}${amountWithoutOperator}`
+  span.textContent = `${name} R$ ${operator}${amountWithoutOperator}`
   li.appendChild(span)
 
   const fragment = document.createDocumentFragment()

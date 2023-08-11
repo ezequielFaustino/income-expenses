@@ -1,7 +1,7 @@
 @import '../base/base.css';
 
 .wrapper {
-  background-color: var(--clr-primary-500);
+  border: 2px solid var(--clr-primary-500);
   border-radius: 1em;
   padding: 0 1em;
   max-width: 60em;
@@ -18,12 +18,16 @@
 
   @media screen and (min-width: 60em) {
     min-width: 50em;
-    background: none;
+    border: none;
   }
 }
 
 .current-balance {
   padding: .5em 0;
+
+  h1 {
+    margin-bottom: 1.5em;
+  }
 
   @media screen and (min-width: 60em) {
     text-align: center;
@@ -50,7 +54,7 @@
   }
   
   & div>p {
-    font-weight: 500;
+    font-weight: 700;
   }
   
   & div>p[data-js="money-plus"] {
@@ -69,7 +73,6 @@
 }
 
 ul[data-js="transactions-list"] {
-  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
 
@@ -79,9 +82,12 @@ ul[data-js="transactions-list"] {
     user-select: none;
 
     & span {
-      margin-left: 1em;
-
+      margin: 0 .75em; 
     }
+  }
+
+  & li:last-child {
+    margin-bottom: 1.5em;
   }
 
   & li.plus {
@@ -95,10 +101,11 @@ ul[data-js="transactions-list"] {
   & button.delete-btn {
     cursor: pointer;
     padding: 0 .5em;
-
+    border-right: 1px solid var(--clr-primary-500);
+    
     & i {
       pointer-events: none;
-      margin-left: .75em;
+      margin: 0 .25em;
     }
   }
 }
