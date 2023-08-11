@@ -3,30 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --clr-primary-700: #1C2BED;
-  --clr-primary-500: rgb(3, 158, 3);
-  --clr-secondary-500: #ED1311;
-  --clr-neutral: #F2EDDA;
+  --clr-primary-700: #3FCC3D;
+  --clr-primary-500: #99653D;
+  --clr-secondary-500: #FF2300;
+  --clr-secondary-700: #99653D;
+  --clr-neutral: #fff;
 
   --ff-base: 'IBM Plex Mono', monospace;
 }
 
 h1 {
-  font-size: clamp(1.25rem, 1rem + 10vw, 1.5rem);
   color: var(--clr-primary-700);
-}
-
-h2,
-h3 {
-  font-size: clamp(1rem, 1rem + 10vw, 1.25rem);
-  padding: 1.25em 0;
-}
-
-h4,
-p {
-  font-size: clamp(0.75rem, 1rem + 10vw, 1rem);
 }
 
 body {
   font-family: var(--ff-base);
+  color: var(--clr-neutral);
+
+  @media screen and (min-width: 60em) {
+    color: inherit;
+  }
 }

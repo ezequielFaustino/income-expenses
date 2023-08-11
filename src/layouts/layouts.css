@@ -1,7 +1,8 @@
 @import '../base/base.css';
 
 .wrapper {
-  border-radius: 1.25em;
+  background-color: var(--clr-primary-500);
+  border-radius: 1em;
   padding: 0 1em;
   max-width: 60em;
   margin-inline: auto;
@@ -11,6 +12,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  & h2 {
+    padding: 1em 0;
+  }
+
   @media screen and (min-width: 60em) {
     min-width: 50em;
     background: none;
@@ -18,26 +23,21 @@
 }
 
 .current-balance {
-  margin-bottom: 1em;
-
-  & h4 {
-    margin-bottom: 0.5em;
-  }
+  padding: .5em 0;
 
   @media screen and (min-width: 60em) {
     text-align: center;
   }
-  
 }
 
 .inc-exp-list {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: .5em 1.5em;
+  padding: 1em 1.5em;
 
   & div:first-child {
-    border-right: 2px solid var(--clr-neutral);
+    border-right: 2px solid var(--clr-secondary-700);
 
     @media screen and (min-width: 60em) {
       border: none;
@@ -45,17 +45,16 @@
   }
 
   & div>h3 {
-    padding-bottom: 0;
-    margin: .5em 1em;
+    padding: 0 1em;
+    margin: .25em 0;
   }
   
   & div>p {
     font-weight: 500;
-    padding: 0 .5em;
   }
   
   & div>p[data-js="money-plus"] {
-    color: var(--clr-primary-500);
+    color: var(--clr-primary-700);
   }
 
   & div>p[data-js="money-minus"] {
@@ -66,7 +65,7 @@
 .transactions-title {
   padding-top: 1.5em;
   padding-bottom: 0;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 ul[data-js="transactions-list"] {
@@ -86,7 +85,7 @@ ul[data-js="transactions-list"] {
   }
 
   & li.plus {
-    border-right: 2px solid var(--clr-primary-500);
+    border-right: 2px solid var(--clr-primary-700);
   }
 
   & li.minus {
